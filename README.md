@@ -1,3 +1,5 @@
+Aloittakaa repon nimi sukunimellä.
+
 Voidaan myös sopia jonkin toisen teknologian ja luoda sille repon.
 
 Valitse yksi tutoriaali ja tee sille projekti.
