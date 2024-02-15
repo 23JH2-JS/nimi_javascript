@@ -1,14 +1,17 @@
-Aloittakaa repon nimi sukunimellä.
+Katsokaa mallia sukunimi_etunimi_javascript reposta
 
-Voidaan myös sopia jonkin toisen teknologian ja luoda sille repon.
+Huom!. Voidaan myös sopia jonkin toisen teknologian opiskelu ja luokaa sille repo.
 
-Valitse yksi tutoriaali ja tee sille projekti.
-Lisää projektiin tekstitiedosto, mitä tutoriaalia se seuraa.
-Tee commitit aina työskentelyn päätteeksi. Niitä pitäisi löytyä säännöllisesti viikon aikana.
+1. Valitse yksi tutoriaali ja tee sille projekti omaan repoosi.
+2. Lisää projektiin tekstitiedosto, jossa mainitaan mitä tutoriaalia siinä seurataan.
+3. Tee commitit aina työskentelyn päätteeksi. Niitä pitäisi löytyä säännöllisesti viikon aikana.
 
 Tekstitutoriaalit
 
-MDN materiaali, HTML, CSS ja JavaScript: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web
+TEHDÄÄN YHDESSÄ TÄMÄ: MDN materiaali, HTML, CSS ja JavaScript: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web
+
+Muita alla olevia tutoriaaleja voi tehdä itsenäisesti.
+
 javascript.info: https://javascript.info/
 Odin Project: https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript
 
