@@ -12,12 +12,12 @@ TEHDÄÄN YHDESSÄ TÄMÄ: MDN materiaali, HTML, CSS ja JavaScript: https://deve
 
 Muita alla olevia tutoriaaleja voi tehdä itsenäisesti.
 
-javascript.info: https://javascript.info/
-Odin Project: https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript
+1. javascript.info: https://javascript.info/
+2. Odin Project: https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript
 
 Videotutoriaalit
-SuperSimpleDev osa 1: https://www.youtube.com/watch?v=SBmSRK3feww&ab_channel=SuperSimpleDev
-SuperSimpleDev osa 2: https://www.youtube.com/watch?v=TmcEmsyYKXE&list=PLEPye7A7EcQZrT3VSBb7jtxnxIfY3yyG6&index=4&ab_channel=SuperSimpleDev
+1. SuperSimpleDev osa 1: https://www.youtube.com/watch?v=SBmSRK3feww&ab_channel=SuperSimpleDev
+2. SuperSimpleDev osa 2: https://www.youtube.com/watch?v=TmcEmsyYKXE&list=PLEPye7A7EcQZrT3VSBb7jtxnxIfY3yyG6&index=4&ab_channel=SuperSimpleDev
 
-freeCodeCamp.org FULL: https://www.youtube.com/watch?v=jS4aFq5-91M&ab_channel=freeCodeCamp.org
-freeCodeCamp.org DOM: https://www.youtube.com/watch?v=5fb2aPlgoys&ab_channel=freeCodeCamp.org
+3. freeCodeCamp.org FULL: https://www.youtube.com/watch?v=jS4aFq5-91M&ab_channel=freeCodeCamp.org
+4. freeCodeCamp.org DOM: https://www.youtube.com/watch?v=5fb2aPlgoys&ab_channel=freeCodeCamp.org
