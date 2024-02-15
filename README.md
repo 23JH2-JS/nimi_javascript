@@ -1,3 +1,5 @@
+Voidaan myös sopia jonkin toisen teknologian ja luoda sille repon.
+
 Valitse yksi tutoriaali ja tee sille projekti.
 Lisää projektiin tekstitiedosto, mitä tutoriaalia se seuraa.
 Tee commitit aina työskentelyn päätteeksi. Niitä pitäisi löytyä säännöllisesti viikon aikana.
