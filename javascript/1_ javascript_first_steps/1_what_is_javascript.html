@@ -1,0 +1,122 @@
+<!-- Linkki artikkeliin -->
+<!-- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript -->
+
+
+<!-- 
+
+    Luetaan artikkelia ja kirjataan tähän oleelliset asiat
+    Notes here:
+
+    HTML, mitä sivulla on
+    CSS, miltä se näyttää
+    JavaScript, tekee toiminta logiikan selaimella ja muokkaa sisältöä ja paljon muuta
+
+    APIs = kokoelma koodia, jonka kautta voi käsitellä muita systeemejä
+    1. browser APIs, esim document, jonka kautta voidaan muokata HTML-dokumentin sisältöä
+        Document Object Model (DOM)
+    2. 3rd party APIs, Twitter API, Google Maps API, Open-Data APIs jne
+
+    Jokaisen sivuston JavaScript suoritetaan omissa "sankoissa" -execution environments-
+    Ei päästä käsiksi muiden välilehtien ja sivustojen dataan.
+
+    Koodin suoritus, ylhäältä alaspäin. Kokeillaan muokata button 
+    1. ja 2 rivit toisin päin
+
+    Interpreted versus compiled code
+    - Interpreted, koodi käsitellään luottavassa muodossa ja suoritetaan suoraan
+    - hitaampi
+    - JavaScript, Python, PHP, Ruby
+    - just-in-time compiling (JIT)
+    - koodi käännetään binääri muotoon selaimessa ennen suoritusta
+
+    - Compiled, koodi käännetään eri muotoon (machine code, binary code, välimuoto)
+    - prosessori ymmärtää vain 0101010100101101010
+    - nopeampi
+    - C#, C++, Rust, Go
+
+    Server-side versus client-side code
+    Palvelimen koodi             -   Selaimen koodi
+    PHP, C#, Rust, Go, Python         JavaScript
+    Selaimen koodiin ei pysty luottamaan, käyttäjä voi muokata
+    Esim JavaScript ottaa yhteyden palvelimeen / tietokantaan
+
+    Dynaaminen, staattinen ja responsiivinen
+    Dynaaminen sisältö viittaa sisältöön, jota voidaan muokata koodilla
+    Palvelimella näytetään eri sisältöä käyttäjästä riippuen ja tietokannan tiedon
+    perusteella
+
+    Selaimella JavaScript voi muokata sisältöä samalla kun käyttäjä toimii sivustolla
+
+    Staattisen sivun sisältö ei ikinä muutu
+
+    Responsiivinen viittaa sivuston asetteluun näytön koosta riippuen
+
+
+    Kuinka lisätään JavaScript:iä sivulle - sama idea kuin CSS
+    1. Internal JavaScript - head sisälle - joskus on laitettu body loppuun
+    2. External JavaScript
+    3. Inline JavaScript <- EI TÄTÄ
+
+ -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href=""> -->
+    <style>
+        button {
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-transform: uppercase;
+            border: 2px solid rgb(200 0 200 / 60%);
+            color: rgb(50 0 0 / 100%);
+            padding: 5px 10px;
+            cursor: crosshair;
+        }
+    </style>
+    <!-- defer attribuutti, odotetaan ensin HTML, sitten suoritetaan JS -->
+    <script src="1_script.js" defer></script>
+    <script>
+        // Tässä Internal JavaScript
+        console.log("JS in head");
+    </script>
+</head>
+<body>
+    
+    <button type="button">Player 1: Chris</button>
+
+
+    <script>
+        // Internal JavaScript
+        // Koodi on tällä kertaa tiedoston pohjalla, koska täällä käytetään
+        // button-elementtiä
+        // Jos tämä koodi on tiedoston alussa, ei löyty button-elementtiä
+        // ja saadaan virhe
+        // Tähän ongelmaan on myös muita ratkaisuja
+
+// viittaus elementtiin =  API      Metodi     Parametri
+        const button = document.querySelector("button");  
+        console.log("button viittaus tehty");      
+
+        // Lisätään eventti, jota seurataan.  ("EVENT_NAME", FUNCTION_NAME)
+        button.addEventListener("click", updateName);        
+        console.log("lisätty event kuuntelija");    
+
+        // function addEventListener(string, function){
+            // Tässä koodia
+        // }
+
+        // function funktion_nimi (parametrit?) { koodi }
+        function updateName() {
+            console.log("suoritetaan \"updateName\"-funktio");    
+            // muuttuja =  pyydetään käyttäjältä arvo
+            const name = prompt("Enter a new name");
+            // Tallennetaan button elementin teksti osioon uusi arvo
+            button.textContent = `Player 1: ${name}`;
+            // 2 x shift + ? oikealla puolella = ``
+        }
+
+    </script>
+</body>
+</html>
