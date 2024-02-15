@@ -8,7 +8,7 @@ Huom!. Voidaan myös sopia jonkin toisen teknologian opiskelu ja luokaa sille re
 
 Tekstitutoriaalit
 
-TEHDÄÄN YHDESSÄ TÄMÄ: MDN materiaali, HTML, CSS ja JavaScript: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web
+TEHDÄÄN YHDESSÄ TÄMÄ: MDN materiaali, HTML, CSS ja JavaScript: [https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
 
 Muita alla olevia tutoriaaleja voi tehdä itsenäisesti.
 
