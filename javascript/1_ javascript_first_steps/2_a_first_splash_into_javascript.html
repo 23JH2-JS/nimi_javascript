@@ -72,7 +72,10 @@
 
       // Viitttaukset formiin ja arvaus nappiin
       const guessSubmit = document.querySelector(".guessSubmit"); // nappi
+      guessSubmit.addEventListener("click", checkGuess);
+    //   guessSubmit.draggable = true;
       const guessField = document.querySelector(".guessField"); // textbox
+      guessField.focus();
 
       let guessCount = 1; // Arvauksien määrä, oletuksena 1. arvaus
       let resetButton; // Kun luodaan reset nappi, tallennetaan sen objekti viittaus tähän
@@ -99,7 +102,84 @@
       // 4. lisätään arvauksia lukumäärää
       // 5. tyhjennetään arvauskenttä ja valitaan se aktiiviseksi
       function checkGuess() {
+        const userGuess = Number(guessField.value); // .value on input-objektin property (muuttuja)
 
+        // Ensimmäinen arvaus
+        if(guessCount === 1){
+            guesses.textContent = "Previous guesses:";
+        }
+        guesses.textContent = `${guesses.textContent} ${userGuess}`; // Lisätään uusi arvaus
+
+        if(userGuess === randomNumber){
+            // Voitto
+            lastResult.textContent = "Congratulations! You got it right!";
+            lastResult.style.backgroundColor = "green";
+            lowOrHi.textContent = "";
+            setGameOver();
+        }else if(guessCount === 10){
+            // Häviö
+            lastResult.textContent = "!!!GAME OVER!!!";
+            lowOrHi.textContent = "";
+            setGameOver();
+        }else{
+            // Jatketaan peliä
+            lastResult.textContent = "Wrong!";
+            lastResult.style.backgroundColor = "red";
+            // Lisää koodi, joka ilmoittaa onko arvaus yli vai ali
+            // tieto näytetään lowOrHi-elementissä
+            if(userGuess > randomNumber){
+                lowOrHi.textContent = "Guess was too high!";
+            }
+            else{
+                lowOrHi.textContent = "Guess was too low!";
+            }
+        }
+
+        guessCount++; // lisätään arvauksien lukumäärää
+        guessField.value = ""; // tyhjennetän arvaus kenttä
+        guessField.focus(); // valitaan arvaus kenttä
+      } // checkGuess
+
+      function setGameOver(){
+        // Poistaa numeron arvauksen pois käytöstä
+        guessField.disabled = true;
+        guessSubmit.disabled = true;
+
+        // Luodaan uusi button ja lisätään se body osioon
+        // Huomioi, että käytetään resetButton muuttujaa, joka luotiin alussa
+        // Jos ei käytetä globaalia muuttujaa, se olisi käyttössä vain tämän funktion sisällä
+        resetButton = document.createElement("button");
+        resetButton.textContent = "Start new game";
+        document.body.append(resetButton);
+        resetButton.addEventListener("click", resetGame);
+      } // setGameOver
+
+      // Palautetaan kaikki oletusarvot, eli alkutilanteeseen
+      function resetGame(){
+        guessCount = 1;
+
+        // Haetaan .resultParas-elementin sisältä kaikki p-elementit
+        const resetParas = document.querySelectorAll(".resultParas p");
+        // console.log(resetParas);
+        for(const pElement of resetParas){
+            // console.log(pElement);
+            pElement.textContent = "";
+        }
+
+        // Koska resetButton on globaali, voidaan poistaa nappi täällä
+        // uusi nappi  body        uusi nappi
+        // console.log(resetButton.parentNode);
+        resetButton.parentNode.removeChild(resetButton);
+
+        guessField.disabled = false;
+        guessSubmit.disabled = false;
+        guessField.value = "";
+        guessField.focus();
+
+        lastResult.style.backgroundColor = "white";
+
+        randomNumber = Math.floor(Math.random()*100) + 1;
+        console.log(randomNumber);
       }
 
     </script>
