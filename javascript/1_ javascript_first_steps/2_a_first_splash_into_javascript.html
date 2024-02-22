@@ -1,12 +1,107 @@
 <!-- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/A_first_splash -->
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Number guessing game</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+      
+      .form input[type="number"] {
+        width: 200px;
+      }
+
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Number guessing game</h1>
+
+    <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+
+    <div class="form">
+      <label for="guessField">Enter a guess: </label>
+      <input type="number" min="1" max="100" required id="guessField" class="guessField">
+      <input type="submit" value="Submit guess" class="guessSubmit">
+    </div>
+
+    <div class="resultParas"> <!-- Tänne JavaScript syöttää tietoa -->
+      <p class="guesses"></p> <!-- 50 75 67 jne -->
+      <p class="lastResult"></p> <!-- wrong / right -->
+      <p class="lowOrHi"></p> <!-- low / high -->
+    </div>
+
+    <script>
+
+      // Your JavaScript goes here
+      // Yleensä JavaScript ei tule tänne, sen sijaan erillinen tiedosto ja defer attributti
+      // Tässä esimerkissä script on bodyn lopussa, koska tarvitaa viittaukset p-elementteihin
+
+      // Määritellään tarvittavat muuttujat - nämä muuttujan ovat globaaleja - ovat käytettävissä funktioissa
+      // Yleensä määritellään muuttujat / state, jota koodi tarvitsee
+      // state - sovelluksen olotila muuttujien arvojen perusteella
+
+      // Arvotaan satunnainen numero
+      //    57.58364834 pyöristää alaspäin 0.0-0.99 * 100 (0-99) + 1 = 1 - 100
+      let randomNumber = Math.floor(Math.random()*100) + 1;
+      // aiemmin käytetty var muuttujia, mutta nykyään pääsääntöisesti let
+      // let muuttujaa voidaan muokata
+
+      // Viittaukset p-elementteihin
+      // const muuttujaa ei voida muokata. Mutta muuttujassa olevaa objektia voidaan muokata
+      const guesses = document.querySelector(".guesses");
+      const lastResult = document.querySelector(".lastResult");
+      const lowOrHi = document.querySelector(".lowOrHi"); //          ->            selaimen sisältö
+      // Tässä tallessa        tässä haetaan viittaus johonkin objektiin         muokkaa selaimessa elementtiä   
+
+      // Viitttaukset formiin ja arvaus nappiin
+      const guessSubmit = document.querySelector(".guessSubmit"); // nappi
+      const guessField = document.querySelector(".guessField"); // textbox
+
+      let guessCount = 1; // Arvauksien määrä, oletuksena 1. arvaus
+      let resetButton; // Kun luodaan reset nappi, tallennetaan sen objekti viittaus tähän
+
+
+      // Toiminnallisuus, eli funktiot / metodit
+
+      // Funktion rakenne: function-sana funktionNimi (sulut, jossa, voi, olla, parametrejä) {suoritetta koodi}
+      // Ja joskus jotakin muuta
+
+      function test() {
+        const name = "test";
+        // template literals
+        const greeting = `Terve ${name}`; // <- backticks / takahipsu, ? oikealla puolen. + shift
+
+        alert(greeting);
+      }
+
+      // 1. luetaan käyttäjän syöttämä arvo
+      // 2. tallennetaan se guesses-elementiin (jos eka arvaus lisätään "Previous guesses:"-teksti)
+      // 3a. tutkitaan onko arvaus oikein (jos oikein suoritetaan sen tilanteen koodit)
+      // 3b. tutkitaan oliko viimeinen arvaus (jos viimeinen arvaus, suoritetaan pelin lopetus)
+      // 3c. muussa tapauksessa on vielä arvauksia ja suoritetaan tarvittavat koodit
+      // 4. lisätään arvauksia lukumäärää
+      // 5. tyhjennetään arvauskenttä ja valitaan se aktiiviseksi
+      function checkGuess() {
+
+      }
+
+    </script>
+  </body>
 </html>
