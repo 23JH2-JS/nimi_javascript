@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Press me</button>
+    <div id="greeting"></div>
+    <textarea class="multiline"></textarea>
+
+    <script>
+        const string = "The revolution.";
+        const single = 'heittomerkit';
+        const backtick = `backtick - ${string} - template syntaxia`; // shift + kysymysmerkin oikealla puolen
+        const noBacktick = "testi " + single + " " + string + " teksti";
+        const joined = `${string} ja ${single}`;
+
+        console.log(string);
+        console.log(single);
+        console.log(backtick);
+        console.log(noBacktick);
+        console.log(`Joined: ${joined}`);
+
+        // 1. haetaan viittaus button-elementiin
+        const button = document.querySelector("button"); // queryselector, hakee ensimmäisen elementin "button"
+
+        // 2. luodaan funktio, 
+        function greet(){
+            // jossa kysytään käyttäjän nimi prompt-toiminnolla
+            const name = prompt("What is your name?");
+            // 3. funktiossa lopuksi syötetään teksti #greeting-id elementtiin
+            const greeting = document.querySelector("#greeting"); // viittaus div-elementiin
+            greeting.textContent = `Hello ${name}, nice to see you!`; // syötetään teksti div-elementin text osaan
+        }
+        
+        // 4. lisätään button-elementille kuuntelija "click", joka suorittaa funktion
+        // greet() <- suorittaa funktion
+        // greet <- viittaus funktioon
+        button.addEventListener("click", greet);
+
+        const multiline = document.querySelector(".multiline"); // . on viittaus luokan nimeen
+        const a = 10;
+        const b = 5;
+        // multiline.textContent = 'They\'ve said "Hello".        Tässä on\nrivin vaihto';
+        multiline.textContent = 
+`"''""''""tässä on 
+rivin vaihto
+${a * b}`; // template syntaksiin voi laittaa "expressions"
+        // pääsääntöisesti kannattaa käyttää template syntaksia
+
+        const myString = "123"; // "undefined" "NaN"
+        const myNum = 234; // "NaN234"  TypeScript <- on rakennettu JavaScript päälle, joka lisää data tyypit
+        const number = Number(myString); // primitive datatype, 0000000001110100
+        const numberObject = new Number(myString); // objekti, johon viittaus, raskaampi datatyyppi
+        console.log(`
+myString ${typeof myString}
+myNum ${typeof myNum}
+Number ${typeof number}
+numberObject ${typeof numberObject}
+summa: ${number + myNum}`);
+        console.log(myString+myNum);
+
+    </script>
+</body>
+</html>
