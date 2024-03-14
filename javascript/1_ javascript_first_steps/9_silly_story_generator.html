@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        
+        <title>Silly story generator</title>
+        
+        <style>
+            body {
+                font-family: helvetica, sans-serif;
+        width: 350px;
+      }
+
+      label {
+          font-weight: bold;
+        }
+
+        div {
+            padding-bottom: 20px;
+      }
+      
+      input[type="text"] {
+          padding: 5px;
+        width: 150px;
+    }
+    
+    p {
+        background: #ffc125;
+        color: #5e2612;
+        padding: 10px;
+        visibility: hidden;
+      }
+      </style>
+  </head>
+
+  <body>
+      <div>
+          <label for="customname">Enter custom name:</label>
+          <input id="customname" type="text" placeholder="" />
+        </div>
+        <div>
+      <label for="us">US</label
+      ><input id="us" type="radio" name="ukus" value="us" checked />
+      <label for="uk">UK</label
+        ><input id="uk" type="radio" name="ukus" value="uk" />
+    </div>
+    <div>
+        <button class="randomize">Generate random story</button>
+    </div>
+    <!-- Thanks a lot to Willy Aguirre for his help with the code for this assessment -->
+    <p class="story"></p>
+    <script>
+        // 1. luodaan muuttujat elementeille ja randomFromArray
+
+        const customName = document.getElementById('customname');
+        const randomize = document.querySelector('.randomize');
+        const story = document.querySelector('.story');
+
+        function randomValueFromArray(array){
+            const randomIndex = Math.floor(Math.random()*array.length); // 0-0,99 * 3 = 0,1,2
+            // 0-0,33 * 3 = 0   0,34-0,66 * 3 = 1   0,67 - 0,99 * 3 = 2
+            // Math.floor poistaa satunnaisesta luvusta desimaalin, joten saadaan tasan 0, 1 tai 2
+
+            // Tässä palautetaan satunnaisen indeksin elementti
+            return array[randomIndex];
+        }
+
+        // 2. Harjoituksen data talteen muuttujiin
+
+        const storyText = 'It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.';
+        const insertX = [
+            "Willy the Goblin",
+            "Big Daddy",
+            "Father Christmas",
+        ];
+        const insertY = [
+            "the soup kitchen",
+            "Disneyland",
+            "the White House",
+        ];
+        const insertZ = [
+            "spontaneously combusted",
+            "melted into a puddle on the sidewalk",
+            "turned into a slug and crawled away",
+        ];
+
+        randomize.addEventListener('click', result);
+
+        function result(){
+            let newStory = storyText;
+
+            // Haetaan satunnaiset elementit taulukoista
+            const xItem = randomValueFromArray(insertX);
+            console.log(xItem);
+            const yItem = randomValueFromArray(insertY);
+            const zItem = randomValueFromArray(insertZ);
+
+            // useissa string metodeissa syötettyä string arvoa ei muokata (immutable)
+            // vaan se palautttaa uuden string arvon, jossa on muokkaukset
+            // sen vuoksi vanha string pitää manuaalisesti korvata uudella string arvolla
+            newStory = newStory.replaceAll(':insertx:', xItem);
+            newStory = newStory.replaceAll(':inserty:', yItem);
+            newStory = newStory.replaceAll(':insertz:', zItem);
+
+            // Korvataan "Bob" käyttäjän syöttämällä nimellä (jos on arvo syötetty)
+            if(customName.value !== ''){
+                const name = customName.value;
+                newStory = newStory.replaceAll('Bob', name);
+            }
+
+            if(document.getElementById("uk").checked) {
+                const weight = `${Math.round(300 * 0.0714286)} stone`;
+                const temperature =  `${Math.round((94-32) * 5 / 9)} centigrade`;
+
+                newStory = newStory.replaceAll('94 fahrenheit', temperature);
+                newStory = newStory.replaceAll('300 pounds', weight);
+            }
+
+            story.textContent = newStory;
+            story.style.visibility = 'visible';
+        }
+
+    </script>
+</body>
+</html>
