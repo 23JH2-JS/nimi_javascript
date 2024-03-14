@@ -1,0 +1,163 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <label for="weather">Select the weather type today: </label>
+    <select name="weather">
+        <option value="">--Make a choice--</option>
+        <option value="sunny">Sunny</option>
+        <option value="2">Rainy</option>
+        <option value="snowing">Snowing</option>
+    </select>
+
+    <label for="theme">Select theme: </label>
+    <select id="theme">
+        <option value="1">Light</option>
+        <option value="2">Dark</option>
+    </select>
+
+    <h1>This is my website</h1>
+
+    <p></p>
+    
+    <script>
+        // Conditionals
+        // Suoritetaan koodia, riippuen tilanteesta
+
+        // Esim 1:
+        // käyttäjä ottaa yhteyden admin-sivulle
+        //
+        // if(käyttäjä on admin)
+        // {
+        //     Näytetään admin sivu
+        // } else {
+        //      Siirretään etusivulle   
+        // }
+        //
+        //
+        // Esim 2:
+        // Pelaaja menettää elämän pelissä
+        //
+        // if lives > 0
+        //      restart level
+        // else
+        //      display game over
+        //
+        //
+
+        const random = Math.random(); // 0 - 0,99
+
+        if(random < 0.5){ // random === 0,5 tämä ei toimi oikein
+            console.log("Alle puolet");
+        } else if(random < 0.1){
+            console.log("Alle kymmenes"); // Tämä ei tapahdu ikinä
+        }else{            
+            console.log("Yli puolet");
+        }
+
+        // if else rakenne suoritetaan ylhäältä alaspain, eli ensimmäinen suoritetaan
+        // voi olla vain if, if-else tai useita else-fi rakenteita välissä
+        // sulkujen sisälle pitää saada boolean arvo true tai false
+        // jos arvo itsestään on jo true tai false, ei tarvitse suorittaa vertailua
+
+
+        const select = document.querySelector("select");
+        const para = document.querySelector("p");
+
+        select.addEventListener("change", setText);
+
+        function setText(){
+            // Haetaan valittu vaihtoehto
+            const choice = select.value;
+
+            if(choice === "sunny"){
+                para.textContent = "It is sunny!";
+            } else if(choice == "2"){
+                para.textContent = "It is rainy!";
+            }else if(choice == "snowing"){
+                para.textContent = "It is snowing!";
+            }else{
+                para.textContent = ""; // Oletuksena tyhjä teksti (ei valintaa)
+            }
+        }
+
+        // Vertailu operaatiot ja loogiset operaattorit
+        // === yhtä suuri
+        // > < isompi, pienempi kuin
+        // <= >= isompi tai yhtäsuuri, pienempi tai yhtäsuuri
+
+        // && ja <- molempien pitää olla true  if(isValid && hasCredits)
+        // || tai <- jompi kumpi pitää olla true if(isValid || hasCredits)
+        // voi ketjuttaa useamman loogisen operaattorin
+        // ! eli NOT operaattori, kääntää true->false tai false->true
+        // if(!false) <- tämä suoritetaan, koska lopputuloksena on true
+
+        // sisäkkäisiä if rakenteita
+        // if rakenteen sisällä voi olla lisää if rakenteita
+        // ei kuitenkaan kannata rakentaa liian syviä rakenteita, vaikea luettavuus
+        const isAdmin = true;
+        if(isAdmin === true){
+            if(true){
+
+            }
+            else{
+                if(false){
+
+                }
+            }
+        }
+
+        // switch
+        // jossain tilanteissa helpompiu lukuinen kuin if-else
+        // joskus saattaa olla parempi suorituskyky kuin if-else
+
+        const test1 = Math.floor(Math.random() * 10); // 0 - 9
+        switch (test1){
+            case 1:
+                // code here
+                console.log("eka");
+                console.log(test1); // 1
+                break; // ensimmäinen vaihtoehto päättyy
+            case 2:
+                // code here
+                console.log("toka");
+                console.log(test1); // 2
+                break;
+            default:
+                // oletus vaihtoehto
+                console.log("default");
+                console.log(test1); // 0, 3-9
+                break;
+        }
+
+
+        // Ternary operator
+        // condition ? code if true : code if false
+
+        const greeting = isAdmin === true
+            ? "true -> hello admin"
+            : "false -> hello user";
+        console.log(greeting);
+
+        const select2 = document.querySelector("#theme");
+        const html = document.querySelector("html");
+        document.body.style.padding = "10px";
+
+        function update(bgColor, textColor){
+            html.style.backgroundColor = bgColor;
+            html.style.color = textColor;
+        }
+
+        select2.addEventListener("change", () =>
+            select2.value === "2"
+                ? update("black", "white")
+                : update("white", "black"),
+        );
+
+    </script>
+</body>
+</html>
