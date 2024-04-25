@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Change color</button>
+    <input type="text">
+</body>
+
+<script>
+    const controller = new AbortController();
+
+
+    // 1. Haetaan viittaus nappiin
+    const btn = document.querySelector("button");
+
+    function jokinFunktio(){
+        const randomColor = `rgb(${random(255)} ${random(255)} ${random(255)} )`;
+        console.log(randomColor);
+        document.body.style.backgroundColor = randomColor;
+    }
+
+    // 2. Lisätään napille eventlistener
+    // addEventListener(tapahtuma, funktio);
+
+    // Toinen tapa:
+    // btn.addEventListener("dblclick", jokinFunktio);
+    btn.addEventListener(
+        "dblclick", 
+        () => {
+            // "rgb(10 255 30)"
+            const randomColor = `rgb(${random(255)} ${random(255)} ${random(255)} )`;
+            console.log(randomColor);
+            document.body.style.backgroundColor = randomColor;
+        },
+        { signal: controller.signal }
+    );
+
+    // 3. funktio, joka generoi satunnaisen luvun
+    function random(maxNumber){
+        return Math.floor(Math.random() * (maxNumber + 1));
+    }
+
+    const input = document.querySelector("input");
+    input.addEventListener("mouseover", () =>{
+        // Kuuntelijan poisto
+        // btn.removeEventListener("dblclick", jokinFunktio);
+        controller.abort(); // Poistaa kaikki listeners/handlers
+    });
+
+</script>
+
+</html>
