@@ -6,7 +6,17 @@
 </head>
 <body>
     <button>Change color</button>
+
+    <!-- inline event, ei suositella -->
+    <!-- <button onclick="jokinFunktio"></button> -->
+
     <input type="text">
+    <form action="error.html">
+        <input id="fname" type="text">
+        <input id="lname" type="text">
+        <input id="submit" type="submit" value="">
+    </form>
+
 </body>
 
 <script>
@@ -37,6 +47,13 @@
         },
         { signal: controller.signal }
     );
+    btn.addEventListener(
+        "dblclick", 
+        () => {
+            console.log("toka kuuntelija");
+        },
+        { signal: controller.signal }
+    );
 
     // 3. funktio, joka generoi satunnaisen luvun
     function random(maxNumber){
@@ -49,6 +66,61 @@
         // btn.removeEventListener("dblclick", jokinFunktio);
         controller.abort(); // Poistaa kaikki listeners/handlers
     });
+
+
+
+    // event handler properties
+    btn.onmouseup = jokinFunktio; // vaihtaa värin
+    btn.onmouseup = () => { // Ei voida määrittää kahta funktiota
+        console.log("mouse up");
+    };
+
+    // inline event handlers - ei suositella
+    // katso html osiosta
+
+    // event objects
+    // kun tapahtuu jokin asia, sen mukana yleensä tulee dataa (event object)
+
+    function bgChange(eventObject){
+
+        console.log(eventObject);
+        eventObject.target.style.backgroundColor = "rgb(0 255 0)";
+
+        const randomColor = `rgb(${random(255)} ${random(255)} ${random(255)} )`;
+        console.log(randomColor);
+        document.body.style.backgroundColor = randomColor;
+    }
+
+    btn.addEventListener("click", bgChange);
+
+    input.addEventListener("keydown", (e) => {
+        console.log(`You pressed ${e.key}`);
+    });
+
+    // Prevent defaults
+    const form = document.querySelector("form");
+    const fname = document.getElementById("fname");
+    const lname = document.getElementById("lname");
+
+    form.addEventListener("submit", (e) => {
+        if(fname.value === "" || lname.value === ""){
+            // Jos puuttuu tiedot, estetään oletus toiminta
+            e.preventDefault();
+            alert("tiedot puuttuvat!");
+        }
+    });
+
+
+    // event bubbling
+    // kuinka selain käyttäytyy kun on sisäkkäisiä elementtejä
+
+    function handleClick(e){
+        console.log(e);
+        console.log(`You clicked ${e.target.localName}`);
+    }
+
+    form.addEventListener("click", handleClick);
+    lname.addEventListener("click", handleClick);
 
 </script>
 
